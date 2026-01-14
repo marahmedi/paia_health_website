@@ -1,13 +1,14 @@
-import { useState } from 'react'
-import './App.css'
+import { Routes, Route } from "react-router-dom";
+import HomeLayout from "./layouts/HomeLayout";
+import PartnersLayout from "./layouts/PartnersLayout";
+import WomenLayout from "./layouts/WomenLayout";
 
-function App() {
-
+export default function App() {
   return (
-    <>
-<p>start of paia</p>
-    </>
-  )
+    <Routes>
+      <Route path="/" element={<HomeLayout />} />
+      <Route path="/partners" element={<PartnersLayout />} />
+      <Route path="/women" element={<WomenLayout />} />
+    </Routes>
+  );
 }
-
-export default App
