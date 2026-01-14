@@ -13,6 +13,7 @@
     "@fontsource/roboto-mono": "^5.2.8",
     "@fontsource/source-serif-pro": "^5.2.5",
     "@tailwindcss/vite": "^4.1.18",
+    "axios": "^1.13.2",
     "clsx": "^2.1.1",
     "lucide-react": "^0.562.0",
     "motion": "^12.23.26",
