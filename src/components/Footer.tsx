@@ -1,18 +1,19 @@
 import React from "react";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo-light.png";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#F3F1ED] border-t border-primary/5 pt-20 pb-10 px-6">
+    <footer className="bg-[#212121] border-t border-primary/5 pt-20 pb-10 px-6 text-white">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-10 mb-20">
           <div className="col-span-2 lg:col-span-2">
             <div className="flex items-center gap-2 text-primary mb-6">
               {/* Logo */}
               <div className="flex items-center gap-2">
-                <img src={logo} alt="logo" className="h-8 w-6" />
+                <img src={logo} alt="logo" className="h-8 w-8" />
 
-                <span className="text-lg font-semibold text-black anonymous-pro-bold">
+                <span className="text-lg font-semibold text-white anonymous-pro-bold">
                   Paia Health
                 </span>
               </div>
@@ -93,24 +94,24 @@ const Footer = () => {
             <h4 className="text-primary font-bold text-sm uppercase tracking-wider">
               Legal
             </h4>
-            <a
+            <Link
               className="text-sm text-text-subtle hover:text-primary transition-colors"
-              href="#"
+              to="/legal/privacy"
             >
               Privacy Policy
-            </a>
-            <a
+            </Link>
+            <Link
               className="text-sm text-text-subtle hover:text-primary transition-colors"
-              href="#"
+              to="/legal/app-data"
             >
-              Terms of Service
-            </a>
-            <a
+              Delete App data
+            </Link>
+            <Link
               className="text-sm text-text-subtle hover:text-primary transition-colors"
-              href="#"
+              to="/legal/account-data"
             >
-              Cookie Settings
-            </a>
+              Delete Account data
+            </Link>
           </div>
         </div>
         <div className="border-t border-primary/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
