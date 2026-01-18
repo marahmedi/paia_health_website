@@ -1,5 +1,5 @@
 import { useState } from "react";
-import logo from "../assets/logo.png";
+import logo from "../assets/logos/logo.png";
 
 const navItems = ["Our Story", "For Partners", "Science", "Journal"];
 

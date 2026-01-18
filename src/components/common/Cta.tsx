@@ -1,36 +1,62 @@
 import React from "react"
-import backgroundCta from "../assets/background-cta.png"
-
+import backgroundCta from "../../assets/organge-circle.png"
 
 const Cta = () => {
   return (
-    <>
+    <section
+      className="relative w-full min-h-[60vh] md:min-h-[80vh] px-4 sm:px-6 flex items-center overflow-hidden"
+      style={{
+        backgroundImage: `url(${backgroundCta})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/10" />
 
-      {/* CTA Section */}
-      <section className="py-24 px-6 bg-[#F3F1ED]">
-        <div className="relative mx-auto max-w-5xl rounded-[2.5rem] overflow-hidden text-center px-6 py-28 md:py-52 shadow-2xl shadow-primary/20">
-            <img src={backgroundCta} alt="background-cta" className="absolute inset-0 w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03]"></div>
-          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-white/10 to-transparent pointer-events-none"></div>
+      <div className="relative z-10 mx-auto w-full max-w-4xl">
+        {/* Card */}
+        <div
+          className="
+            bg-white
+            rounded-[48px] sm:rounded-[64px] md:rounded-[80px]
+            shadow-2xl
+            px-6 py-12
+            sm:px-10 sm:py-14
+            md:px-16 md:py-20
+            min-h-[36vh] sm:min-h-[40vh] md:min-h-[60vh]
+            flex flex-col items-center justify-center
+            text-center
+          "
+        >
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-medium text-black tracking-tight">
+            Ready to empower your members?
+          </h2>
 
-          <div className="relative z-10 max-w-2xl mx-auto flex flex-col items-center gap-8">
-            {/* <Handshake className="text-black/65 h-12 w-12 mb-2" /> */}
-            <h2 className="text-3xl md:text-5xl font-medium text-black tracking-tight">
-              Ready to empower your members?
-            </h2>
-            {/* <p className="mb-4 text-lg font-medium text-black">
-              Join us in redefining women's wellness through intelligent,
-              compassionate technology.
-            </p> */}
-            <div className="flex flex-col sm:flex-row gap-4 w-full justify-center">
-              <button className="h-14 min-w-[220px] rounded-full bg-[#F3F1ED]/90 cursor-pointer px-10 text-base  text-text-black/75  transition-all hover:bg-[#F3F1ED]/50 hover:text-black shadow-lg">
-                Request Partnership Overview
-              </button>
-            </div>
+          {/* Description */}
+          <p className="mt-4 max-w-xl text-sm sm:text-base md:text-lg text-black/70 leading-relaxed">
+            Launch a meaningful women’s wellness benefit with zero technical
+            overhead and real emotional impact.
+          </p>
+
+          {/* Button */}
+          <div className="mt-8">
+            <button
+              className="
+                h-14 px-10 rounded-full
+                bg-[#BD6E40] text-white font-medium
+                transition-all duration-300
+                hover:bg-[#a85f36]
+                active:scale-[0.98]
+                shadow-lg
+              "
+            >
+              Request Partnership Overview
+            </button>
           </div>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   )
 }
 

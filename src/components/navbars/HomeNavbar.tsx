@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import logo from "../../assets/logo-dark.png";
+import logo from "../../assets/logos/logo-dark.png";
 
 export default function HomeNavbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -29,9 +29,9 @@ export default function HomeNavbar() {
                 For Partners
               </Link>
 
-              <button className="h-9 cursor-pointer rounded-full bg-black px-5 text-sm font-semibold text-white hover:bg-black/80 transition">
+              {/* <button className="h-9 cursor-pointer rounded-full bg-black px-5 text-sm font-semibold text-white hover:bg-black/80 transition">
                 Join Waitlist
-              </button>
+              </button> */}
             </div>
 
             {/* MOBILE TOGGLE */}

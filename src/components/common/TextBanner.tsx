@@ -1,38 +1,126 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
+import phone from "../../assets/screenshots/screenshot.png";
+
+/* ---------------------------
+   Lightweight in-view hook
+---------------------------- */
+const useInViewOnce = (threshold = 0.2) => {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    if (!ref.current) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.disconnect();
+        }
+      },
+      { threshold }
+    );
+
+    observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [threshold]);
+
+  return { ref, inView };
+};
 
 const TextBanner = () => {
+  const { ref, inView } = useInViewOnce(0.25);
+
   return (
-    <section className="py-24 px-6 bg-background-alt">
-      <div className="max-w-3xl mx-auto text-center flex flex-col gap-8">
-        <h2 className="text-3xl md:text-4xl font-bold text-text-main leading-tight font-display">
-          Most wellness apps track everything —{" "}
-          <span className="text-text-muted italic font-serif">
-            but explain very little.
-          </span>
-        </h2>
-        <p className="text-text-muted text-lg leading-relaxed font-light">
-          Siloed apps and over-tracking can lead to overwhelm without clarity.
-          You input endless data points, but rarely get the "so what?" in
-          return.
-        </p>
-        <div className="py-6">
-          <span className="inline-block relative text-2xl md:text-3xl text-primary font-serif italic">
-            Paia helps women track less — and understand more.
-            <svg
-              className="absolute -bottom-2 left-0 w-full h-2 text-primary/20"
-              fill="none"
-              preserveAspectRatio="none"
-              viewBox="0 0 200 9"
-              xmlns="http://www.w3.org/2000/svg"
+    <section ref={ref} className="w-full overflow-hidden">
+      <div className="grid grid-cols-1 lg:grid-cols-2">
+        {/* LEFT — TEXT */}
+        <div
+          className={`
+            flex bg-white
+            px-6 py-12
+            sm:px-10 sm:py-14
+            lg:px-14 lg:py-16
+            xl:px-20 xl:py-20
+            transition-all duration-1000
+            [transition-timing-function:cubic-bezier(0.22,1,0.36,1)]
+            motion-reduce:transition-none
+            ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}
+          `}
+        >
+          <div className="mx-auto max-w-2xl lg:text-left">
+            {/* Headline */}
+            <h2 className="text-2xl sm:text-3xl xl:text-4xl font-medium leading-tight text-black">
+              Most wellness apps track everything…{" "}
+              <span className="block opacity-80">
+                but explain{" "}
+                <span className="italic font-semibold text-[#69474E]">
+                  very little.
+                </span>
+              </span>
+            </h2>
+
+            {/* Body */}
+            <p className="hidden md:block mt-5 text-xl sm:text-2xl leading-relaxed text-black/70">
+              Siloed apps and over-tracking can lead to overwhelm without
+              clarity. You input endless data points, but rarely get the “so
+              what?” in return.
+            </p>
+
+            {/* Emphasis */}
+            <p
+              className={`
+                md:mt-32 pt-10
+                text-3xl sm:text-4xl font-serif text-black
+                transition-all duration-1000 delay-200
+                [transition-timing-function:cubic-bezier(0.22,1,0.36,1)]
+                motion-reduce:transition-none
+                ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}
+              `}
             >
-              <path
-                d="M2.00025 6.99997C25.7509 9.36111 159.544 1.77782 198 1"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-width="2"
-              ></path>
-            </svg>
-          </span>
+              Paia helps women{" "}
+              <span className="italic text-[#69474E]">track less</span> and{" "}
+              <span className="italic text-[#69474E]">
+                understand more.
+              </span>
+            </p>
+          </div>
+        </div>
+
+        {/* RIGHT — PHONE */}
+        <div
+          className={`
+            relative flex items-start justify-center
+            bg-[#72382E] overflow-hidden
+            transition-all duration-1000 delay-300
+            [transition-timing-function:cubic-bezier(0.22,1,0.36,1)]
+            motion-reduce:transition-none
+            ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
+          `}
+        >
+          <div
+            className="
+              relative
+              mt-12 sm:mt-14 lg:mt-10
+              h-[45vh] sm:h-[50vh] lg:h-[65vh]
+              w-full
+              flex justify-center
+            "
+          >
+            <img
+              src={phone}
+              alt="Paia app screenshot"
+              className="
+                h-full
+                w-auto
+                max-w-none
+                object-cover
+                translate-y-6
+                lg:translate-y-20
+              "
+              loading="lazy"
+            />
+          </div>
         </div>
       </div>
     </section>

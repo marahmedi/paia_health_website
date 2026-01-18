@@ -1,36 +1,25 @@
 import React, { useEffect, useState } from "react";
-import { LightRays } from "../ui-components/LightRays";
-import { InteractiveHoverButton } from "../ui-components/InteractiveHoverButton";
-import tennis from "../../assets/tennis-bg.png";
-
-type LandingCTA = {
-  label: string;
-  href?: string;
-  onClick?: () => void;
-  variant?: "primary" | "secondary";
-};
+import { Link } from "react-router-dom";
+import tennis from "../../assets/backgrounds/tennis-bg.png";
+import { useDownloadLink } from "../../lib/useDownloadLink";
 
 type LandingProps = {
   heading: string;
   headingTwo?: string;
   description: string;
-  topCta?: LandingCTA;
-  bottomCtas?: LandingCTA[];
 };
 
 const Landing: React.FC<LandingProps> = ({
   heading,
   headingTwo,
   description,
-  topCta,
-  bottomCtas = [],
 }) => {
   const [mounted, setMounted] = useState(false);
+  const download = useDownloadLink();
 
   useEffect(() => {
-    setTimeout(() => {
-      setMounted(true);
-    }, 300);
+    const t = setTimeout(() => setMounted(true), 200);
+    return () => clearTimeout(t);
   }, []);
 
   return (
@@ -38,118 +27,67 @@ const Landing: React.FC<LandingProps> = ({
       {/* BACKGROUND IMAGE */}
       <img
         src={tennis}
-        alt="tennis"
+        alt=""
+        aria-hidden
         className="absolute inset-0 h-full w-full object-cover"
       />
 
-      <section className="relative min-h-screen">
-        {/* LIGHT RAYS */}
-        <div className="absolute inset-0">
-          <LightRays className="absolute inset-0" />
-        </div>
+      {/* MOBILE READABILITY OVERLAY */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/60 sm:hidden" />
 
-        {/* CONTENT */}
-        <div className="relative z-10 flex min-h-screen flex-col px-6">
+      <section className="relative min-h-screen">
+        <div className="relative z-10 flex min-h-screen flex-col px-6 pt-32">
           <div className="flex flex-1 items-center justify-center">
             <div
-              className={`mx-auto max-w-4xl flex flex-col items-center gap-8 text-center
+              className={`mx-auto max-w-5xl flex flex-col items-center gap-10 text-center
                 transition-all duration-700 ease-out
-                motion-reduce:transition-none
                 ${
                   mounted
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-6"
                 }`}
             >
-              {/* TOP CTA */}
-              {topCta && (
-                <div
-                  className={`transition-all duration-700 delay-100
-                    motion-reduce:transition-none
-                    ${
-                      mounted
-                        ? "opacity-100 translate-y-0"
-                        : "opacity-0 translate-y-4"
-                    }`}
-                >
-                  <InteractiveHoverButton
-                    onClick={topCta.onClick}
-                    className="text-sm font-semibold"
-                  >
-                    {topCta.label}
-                  </InteractiveHoverButton>
-                </div>
-              )}
-
               {/* HEADING */}
-              <h1
-                className={`text-balance text-4xl leading-[1.1] tracking-tight md:text-6xl lg:text-7xl
-                  transition-all duration-700 delay-200
-                  motion-reduce:transition-none
-                  ${
-                    mounted
-                      ? "opacity-100 translate-y-0"
-                      : "opacity-0 translate-y-6"
-                  }`}
-              >
-                <span className="text-white font-bold block">
-                  {heading}
-                </span>
+              <h1 className="text-balance text-[2.25rem] font-bold leading-tight tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+                {heading}
                 {headingTwo && (
-                  <span className="block italic text-white/80 font-light mt-2">
+                  <span className="mt-2 block font-light italic text-white/80">
                     {headingTwo}
                   </span>
                 )}
               </h1>
 
               {/* DESCRIPTION */}
-              <p
-                className={`max-w-3xl text-lg leading-relaxed text-white/90 md:text-xl
-                  transition-all duration-700 delay-300
-                  motion-reduce:transition-none
-                  ${
-                    mounted
-                      ? "opacity-100 translate-y-0"
-                      : "opacity-0 translate-y-6"
-                  }`}
-              >
-                {description}
+              <p className="max-w-3xl text-white/90">
+                {/* Mobile-short */}
+                <span className="block sm:hidden text-base leading-relaxed">
+                  Track less. Understand more.
+                </span>
+
+                {/* Desktop-full */}
+                <span className="hidden sm:block text-lg sm:text-xl md:text-2xl leading-relaxed">
+                  {description}
+                </span>
               </p>
 
-              {/* BOTTOM CTAs */}
-              {bottomCtas.length > 0 && (
-                <div
-                  className={`mt-6 flex flex-col gap-4 sm:flex-row
-                    transition-all duration-700 delay-500
-                    motion-reduce:transition-none
-                    ${
-                      mounted
-                        ? "opacity-100 translate-y-0"
-                        : "opacity-0 translate-y-6"
-                    }`}
+              {/* CTA BUTTONS */}
+              <div className="mt-6 flex w-full flex-col gap-3 sm:flex-row sm:w-auto">
+                {/* PRIMARY */}
+                <a
+                  href={download.href}
+                  className="inline-flex h-14 w-full sm:w-auto items-center justify-center rounded-full bg-white px-10 text-lg font-semibold text-black transition hover:bg-white/80"
                 >
-                  {bottomCtas.map((cta, index) => {
-                    const isSecondary = cta.variant === "secondary";
+                  {download.label}
+                </a>
 
-                    return (
-                      <a
-                        key={index}
-                        href={cta.href}
-                        onClick={cta.onClick}
-                        className={`inline-flex h-12 items-center justify-center rounded-full px-8 text-base font-semibold
-                          transition-colors duration-200
-                          ${
-                            isSecondary
-                              ? "border border-white text-white hover:bg-white/80 hover:text-black"
-                              : "bg-white text-black hover:bg-white/70"
-                          }`}
-                      >
-                        {cta.label}
-                      </a>
-                    );
-                  })}
-                </div>
-              )}
+                {/* SECONDARY */}
+                <Link
+                  to="/partners"
+                  className="inline-flex h-14 w-full sm:w-auto items-center justify-center rounded-full border border-white px-10 text-lg font-semibold text-white transition hover:bg-white/10"
+                >
+                  Partner With Us
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -159,3 +97,4 @@ const Landing: React.FC<LandingProps> = ({
 };
 
 export default Landing;
+

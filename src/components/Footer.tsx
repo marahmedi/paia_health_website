@@ -1,10 +1,10 @@
 import React from "react";
-import logo from "../assets/logo-light.png";
+import logo from "../assets/logos/logo-light.png";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#212121] border-t border-primary/5 pt-20 pb-10 px-6 text-white">
+    <footer className="bg-[#212121] pt-20 pb-10 px-6 text-white">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-10 mb-20">
           <div className="col-span-2 lg:col-span-2">
@@ -54,20 +54,10 @@ const Footer = () => {
             >
               About Us
             </a>
-            <a
-              className="text-sm text-text-subtle hover:text-primary transition-colors"
-              href="#"
-            >
-              Careers
-            </a>
-            <a
-              className="text-sm text-text-subtle hover:text-primary transition-colors"
-              href="#"
-            >
-              Press
-            </a>
+           
+            
           </div>
-          <div className="flex flex-col gap-5">
+          {/* <div className="flex flex-col gap-5">
             <h4 className="text-primary font-bold text-sm uppercase tracking-wider">
               Product
             </h4>
@@ -89,7 +79,7 @@ const Footer = () => {
             >
               Science
             </a>
-          </div>
+          </div> */}
           <div className="flex flex-col gap-5">
             <h4 className="text-primary font-bold text-sm uppercase tracking-wider">
               Legal
