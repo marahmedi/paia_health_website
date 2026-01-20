@@ -11,9 +11,9 @@ export default function App() {
       <Route path="/" element={<HomeLayout />} />
       <Route path="/partners" element={<PartnersLayout />} />
       <Route path="/women" element={<WomenLayout />} />
-      <Route path="/legal/privacy" element={<PrivacyPage />} />
-      <Route path="/legal/account-data" element={<AccountDataPage />} />
-      <Route path="/legal/app-data" element={<AppDataPage />} />
+      <Route path="/privacy-policy" element={<PrivacyPage />} />
+      <Route path="/delete-account" element={<AccountDataPage />} />
+      <Route path="/delete-data" element={<AppDataPage />} />
     </Routes>
   );
 }

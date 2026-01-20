@@ -86,19 +86,19 @@ const Footer = () => {
             </h4>
             <Link
               className="text-sm text-text-subtle hover:text-primary transition-colors"
-              to="/legal/privacy"
+              to="/privacy-policy"
             >
               Privacy Policy
             </Link>
             <Link
               className="text-sm text-text-subtle hover:text-primary transition-colors"
-              to="/legal/app-data"
+              to="/delete-data"
             >
               Delete App data
             </Link>
             <Link
               className="text-sm text-text-subtle hover:text-primary transition-colors"
-              to="/legal/account-data"
+              to="/delete-account"
             >
               Delete Account data
             </Link>
