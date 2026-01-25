@@ -1,4 +1,3 @@
-import React from "react"
 import { Share2, Activity, Droplet, Flower } from "lucide-react"
 
 const logos = [

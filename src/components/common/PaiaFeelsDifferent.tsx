@@ -1,4 +1,3 @@
-import React from "react";
 import { ShieldCheck, ArrowBigUp, Brain, Clock} from "lucide-react";
 
 const PaiaFeelsDifferent = () => {

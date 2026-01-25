@@ -1,4 +1,3 @@
-import React from "react"
 import backgroundCta from "../../assets/organge-circle.png"
 
 const Cta = () => {

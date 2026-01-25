@@ -1,4 +1,3 @@
-import React from "react";
 import { Airplay, CreditCard, CalendarCheck } from "lucide-react";
 
 const ctaCards = [

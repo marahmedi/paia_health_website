@@ -1,4 +1,3 @@
-import React from "react";
 import { Key, Users, PieChart, Gem } from "lucide-react";
 
 const cards = [

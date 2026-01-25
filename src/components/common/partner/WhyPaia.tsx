@@ -1,4 +1,3 @@
-import React from "react";
 import { Check } from "lucide-react";
 import bg from "../../../assets/backgrounds/blue-orange-bg.png";
 import image from "../../../assets/woman-writing.png";

@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import ForWomen from "../../assets/backgrounds/smiling-woman-bg.png";
 import ForPartners from "../../assets/backgrounds/yoga-woman-bg.png";
